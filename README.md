@@ -1,2 +1,2 @@
 # FullStack-FootCare-Client
-This website i did based in a small business i visit in my vacation at my home city in brazil. I used prisma and express API
+This website i got inspiration from pé com pé company while I was on vacation at my home city in brazil. I used prisma and express API and added a review section to get feedBack from clients.
