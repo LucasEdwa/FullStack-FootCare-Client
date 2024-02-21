@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+//Set up for the database provider.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//Product stands for header and "products/service of informations".
+model Product {
+  id          Int    @id @default(autoincrement())
+  image       String
+  header      String
+  description String
+}
+
+model FeaturedService {
+  id          Int    @id @default(autoincrement())
+  image       String
+  header      String
+  description String
+}
+
+//This review doesn't have a relation to the user, because it's a review of the page.
+model Review {
+  id        Int      @id @default(autoincrement())
+  name      String
+  rating    Int
+  text      String
+  published DateTime
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String
+  fullName String
+  reviews  Review[]
+}
